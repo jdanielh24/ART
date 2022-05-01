@@ -46,18 +46,19 @@ class ART:
     
 
     def setPv(self, pv):
+        """ 
+            Establecer self.pv
+        
+            Parámetros
+            ----------
+            pv: float
+                parámetro de vigilancia
+        """
         self.pv = pv
 
 
     def aprender(self, X):
-        """ 
-            Método de aprendizaje para X 
-        
-            Parámetros
-            ----------
-            X: ndarray
-                Objeto array que representa un patrón.
-        """
+
 
         # Calcular la salida V2 y ordenarla)
         self.V2[...] = np.dot(self.Wf, X)
