@@ -1,18 +1,15 @@
 """
 Archivo: cuadricula.py
 
-	Contiene funciones para crear y dibujar el mapa como una cuadrícula, en la que cada casilla será un objeto Nodo. 
-	También tiene un método para construir el camino final.
+	Contiene funciones para crear y dibujar una cuadrícula, en la que cada casilla será un objeto Nodo. 
 
 	Importacioness:
-		> Nodo: módulo que provee objetos del tipo Nodo, para almacenar todo su información (tipo, color, costos, posición, etc).
+		> nodo: módulo que provee objetos del tipo Nodo, para almacenar todo su información (si está activado o no).
 		> pygame: módulo que permite la creación de videojuegos en dos dimensiones.
-		> colores: módulo que provee un conjunto de diferentes colores en formato RGB.
 """
 
 from nodo import Nodo
 import pygame
-import colores as Color
 
 def crearCuadricula(filas, ancho, x_inicial):
 	"""
@@ -24,8 +21,8 @@ def crearCuadricula(filas, ancho, x_inicial):
 	   		número de filas (y columnas) que debe de tener la cuadricula.
 		ancho: int
 	   		ancho (y alto) de toda la cuadrícula (# de pixeles).
-		mapa: list
-	   		contiene la distribución de los suelos en el mapa.		   	
+		x_inicial: int
+	   		valor inicial de la coordenada x.		   	
 	"""	
 
 	cuadricula = []
@@ -53,29 +50,33 @@ def dibujarCuadricula(ventana, filas, ancho, x_inicial):
 	   		número de filas (y columnas) que debe de tener la cuadricula.
 		ancho: int
 	   		ancho (y alto) de toda la cuadrícula (# de pixeles).
+		x_inicial: int
+	   		valor inicial de la coordenada x.	
 	"""
 	anchoCasilla = ancho // filas
 	
 	for i in range(filas):
-		pygame.draw.line(ventana, Color.GRIS, (x_inicial, i * anchoCasilla), (ancho + x_inicial , i * anchoCasilla)) # rayas horizontales
+		pygame.draw.line(ventana,(128, 128, 128), (x_inicial, i * anchoCasilla), (ancho + x_inicial , i * anchoCasilla)) # rayas horizontales
 		for j in range(filas+1):
-			pygame.draw.line(ventana, Color.GRIS, ((j * anchoCasilla) + x_inicial, 0), ((j * anchoCasilla) + x_inicial, ancho)) # rayas verticales
+			pygame.draw.line(ventana, (128, 128, 128), ((j * anchoCasilla) + x_inicial, 0), ((j * anchoCasilla) + x_inicial, ancho)) # rayas verticales
 
 def dibujar(ventana, cuadricula, filas, ancho, x_inicial):
 	"""
 		Se dibuja la cuadricula en la ventana.
-		La cuadricula ya contiene los nodos con su respectiva información (ej: el tipo de suelo)
+		La cuadricula ya contiene los nodos con su respectiva información (ej: si está activado o no)
 
 		Parámetros
    		----------
 		ventana: pygame.Surface
-	   		objeto que representa la ventana para la partida.
+	   		objeto que representa la ventana para la aplicacion.
 		cuadricula: list
 			contiene todos los nodos que conforman la cuadricula.
 		filas: int
 	   		número de filas (y columnas) que debe de tener la cuadricula.
 		ancho: int
-	   		ancho (y alto) de toda la cuadrícula (# de pixeles).	
+	   		ancho (y alto) de toda la cuadrícula (# de pixeles).
+		x_inicial: int
+	   		valor inicial de la coordenada x.		
 	"""
 	for fila in cuadricula:
 		for nodo in fila:

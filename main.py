@@ -1,10 +1,14 @@
-from lib2to3.pytree import LeafPattern
-from juego import Juego
-import pygame
+"""
+Archivo: main.py
 
-ANCHO = 600
-LARGO = 1400
-ventanaPartida = pygame.display.set_mode((LARGO, ANCHO))
+    Este archivo es el que se necesita ejecutar para correr la aplicación, utilizando el comando:
+        'python -u "ruta\donde\se\encuentra\main.py"'
 
-partida = Juego(ventanaPartida, ANCHO, LARGO)
+    Importaciones:
+        > aplicacion: Módulo para crear la aplicación.  
+"""
+
+from aplicacion import Aplicacion
+
+partida = Aplicacion()
 partida.ejecutar()

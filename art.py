@@ -1,81 +1,84 @@
-#!/usr/bin/env python
-# -----------------------------------------------------------------------------
-# Adaptive Resonance Theory
-# Copyright (C) 2011 Nicolas P. Rougier
-#
-# Distributed under the terms of the BSD License.
-# -----------------------------------------------------------------------------
-# Reference: Grossberg, S. (1987)
-#            Competitive learning: From interactive activation to
-#            adaptive resonance, Cognitive Science, 11, 23-63
-#
-# Requirements: python 2.5 or above => http://www.python.org 
-#               numpy  1.0 or above => http://numpy.scipy.org
-# -----------------------------------------------------------------------------
-from __future__ import print_function
-from __future__ import division
+"""
+Archivo: art.py
+
+	Este archivo contiene la clase ART, utilizada para utilizar el algoritmo de Adaptative Resonance Theory.
+    Con este algoritmo se puede trabajar con el reconocimiento de patrones.
+
+	Importaciones:
+		> numpy: módulo  para crear vectores y matrices grandes multidimensionales, junto con una gran colección 
+        de funciones matemáticas de alto nivel para operar con ellas.
+"""
+
+
 import numpy as np
 
 
 class ART:
-    ''' ART class
+    """ 
+        Clase ART utilizada para crear una red neuronal utilizando ART.
+    """
 
-    Usage example:
-    --------------
-    # Create a ART network with input of size 5 and 20 internal units
-    >>> network = ART(5,10,0.5)
-    '''
+    def __init__(self, n=4, m=2, pv=.15):
+        """
+            Inicializar la red con los parámetros correspondientes.
 
-    def __init__(self, n=5, m=10, rho=.15):
-        '''
-        Create network with specified shape
-
-        Parameters:
-        -----------
-        n : int
-            Size of input
-        m : int
-            Maximum number of internal units 
-        rho : float
-            Vigilance parameter
-        '''
-        # Comparison layer
-        self.F1 = np.ones(n)
-        # Recognition layer
-        self.F2 = np.ones(m)
-        # Feed-forward weights
+            Parámetros
+            -----------
+            n : int
+                Neuronas de entrada
+            m : int
+                Neuronas de salida
+            pv : float
+                Parámetro de vigilancia
+        """
+        # Capa de comparacion
+        self.V1 = np.ones(n)
+        # Capa de reconocimiento
+        self.V2 = np.ones(m)
+        # Pesos de avance
         self.Wf = np.random.random((m,n))
-        # Feed-back weights
+        # Pesos de retroalimentación
         self.Wb = np.random.random((n,m))
-        # Vigilance
-        self.rho = rho
-        # Number of active units in F2
-        self.active = 0
+        # Vigilancia
+        self.pv = pv
+        # Número de neuronas activas en V2
+        self.activa = 0
+    
+
+    def setPv(self, pv):
+        self.pv = pv
 
 
-    def learn(self, X):
-        ''' Learn X '''
+    def aprender(self, X):
+        """ 
+            Método de aprendizaje para X 
+        
+            Parámetros
+            ----------
+            X: ndarray
+                Objeto array que representa un patrón.
+        """
 
-        # Compute F2 output and sort them (I)
-        self.F2[...] = np.dot(self.Wf, X)
-        I = np.argsort(self.F2[:self.active].ravel())[::-1]
+        # Calcular la salida V2 y ordenarla)
+        self.V2[...] = np.dot(self.Wf, X)
+        I = np.argsort(self.V2[:self.activa].ravel())[::-1]
 
         for i in I:
-            # Check if nearest memory is above the vigilance level
+            # Comprobar si el cálculo es mayor que el parámetro de vigilancia
             d = (self.Wb[:,i]*X).sum()/X.sum()
-            if d >= self.rho:
-                # Learn data
+            if d >= self.pv:
+                # Aprender los datos
                 self.Wb[:,i] *= X
                 self.Wf[i,:] = self.Wb[:,i]/(0.5+self.Wb[:,i].sum())
                 return self.Wb[:,i], i
 
-        # No match found, increase the number of active units
-        # and make the newly active unit to learn data
-        if self.active < self.F2.size:
-            i = self.active
+        # No se encontró ninguna coincidencia, aumentar el número de neuronas de salida
+        # y hacer que la red aprenda los datos
+        if self.activa < self.V2.size:
+            i = self.activa
             self.Wb[:,i] *= X
             self.Wf[i,:] = self.Wb[:,i]/(0.5+self.Wb[:,i].sum())
-            self.active += 1
+            self.activa += 1
             return self.Wb[:,i], i
 
         return None,None
