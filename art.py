@@ -58,6 +58,14 @@ class ART:
 
 
     def aprender(self, X):
+        """
+            Aprender X
+
+            Parametros
+            ----------
+            X: ndarray
+                objeto que contiene los datos para ser aprendidos
+        """
 
 
         # Calcular la salida V2 y ordenarla)

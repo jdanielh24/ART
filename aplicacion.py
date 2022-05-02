@@ -277,13 +277,13 @@ class Aplicacion:
         contenedorTextoControles = self.textoControles.get_rect(center=(700, 360))
         self.ventana.blit(self.textoControles, contenedorTextoControles)
 
-        self.textoClickDer = pygame.font.Font(None, 20).render("Marcar casilla: Click derecho", True, pygame.Color('dodgerblue2'))
-        contenedorTextoClickDer = self.textoClickDer.get_rect(center=(700, 400))
-        self.ventana.blit(self.textoClickDer, contenedorTextoClickDer)
-
-        self.textoClickIzq = pygame.font.Font(None, 20).render("Desmarcar casilla: Click izq.", True, pygame.Color('dodgerblue2'))
-        contenedorTextoClickIzq = self.textoClickIzq.get_rect(center=(700, 430))
+        self.textoClickIzq = pygame.font.Font(None, 20).render("Marcar casilla: Click izq.", True, pygame.Color('dodgerblue2'))
+        contenedorTextoClickIzq = self.textoClickIzq.get_rect(center=(700, 400))
         self.ventana.blit(self.textoClickIzq, contenedorTextoClickIzq)
+
+        self.textoClickDer = pygame.font.Font(None, 20).render("Desmarcar casilla: Click der.", True, pygame.Color('dodgerblue2'))
+        contenedorTextoClickDer = self.textoClickDer.get_rect(center=(700, 430))
+        self.ventana.blit(self.textoClickDer, contenedorTextoClickDer)
 
         self.textoEspacio = pygame.font.Font(None, 20).render("Guardar patrón: [espacio]", True, pygame.Color('dodgerblue2'))
         contenedorTextoEspacio = self.textoEspacio.get_rect(center=(700, 460))
