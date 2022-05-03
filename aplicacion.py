@@ -70,7 +70,7 @@ class Aplicacion:
         # filas, puede ser 2, 4, ... , o 16
         filas = self.DIMENSIONES_POSIBLES[self.indice_dim]
 
-        par_vigilancia = 0.8 # parámetro de vigilancia inicial
+        par_vigilancia = 0.4 # parámetro de vigilancia inicial
 
         self.input_box1 = InputBox(630, 100, 140, 32, pv=par_vigilancia) # crear InputText
 
@@ -133,6 +133,8 @@ class Aplicacion:
 
                 if evento.type == pygame.KEYDOWN:
                     if evento.key == pygame.K_SPACE: # si se presiona tecla de espacio
+
+                        cuadricula_resultado = cuadricula.crearCuadricula(filas, self.ancho, 800)  
 
                         lista = [] # contendrá el patrón reconocido
 

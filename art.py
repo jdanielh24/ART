@@ -43,6 +43,7 @@ class ART:
         self.pv = pv
         # Número de neuronas activas en V2
         self.activa = 0
+        self.clases  = []
     
 
     def setPv(self, pv):
@@ -79,7 +80,10 @@ class ART:
                 # Aprender los datos
                 self.Wb[:,i] *= X
                 self.Wf[i,:] = self.Wb[:,i]/(0.5+self.Wb[:,i].sum())
-                return self.Wb[:,i], i
+                #self.clases = X
+                #self.clases.append[ list(self.Wf[i,:]) ]
+                return self.clases[i], i
+                #return self.Wb[:,i], i
 
         # No se encontró ninguna coincidencia, aumentar el número de neuronas de salida
         # y hacer que la red aprenda los datos
@@ -88,6 +92,7 @@ class ART:
             self.Wb[:,i] *= X
             self.Wf[i,:] = self.Wb[:,i]/(0.5+self.Wb[:,i].sum())
             self.activa += 1
+            self.clases.append(X)
             return self.Wb[:,i], i
 
         return None,None
