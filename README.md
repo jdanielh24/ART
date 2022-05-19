@@ -39,3 +39,8 @@ Acceder a la ruta donde se encuentra el proyecto y ejecutar el comando:
 ```python main.py```
 
 ## Pruebas
+En esta prueba, se utilizó el valor de 0.15 como parámetro de viligancia. Se recomienda un valor pequeño, para que identifique más patrones del mismo tipo.
+
+La primera letra será la G. Damos [espacio] y vemos que se dibuja el patrón, tal cual como se ingresó. También nos indica que pertenece a la clase 0:
+![](/img/1.png)
+
