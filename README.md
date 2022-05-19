@@ -41,6 +41,34 @@ Acceder a la ruta donde se encuentra el proyecto y ejecutar el comando:
 ## Pruebas
 En esta prueba, se utilizó el valor de 0.15 como parámetro de viligancia. Se recomienda un valor pequeño, para que identifique más patrones del mismo tipo.
 
-La primera letra será la G. Damos [espacio] y vemos que se dibuja el patrón, tal cual como se ingresó. También nos indica que pertenece a la clase 0:
+La primera letra es la G. Damos [espacio] y vemos que se dibuja el patrón, tal cual como se ingresó. También nos indica que pertenece a la clase 0:
 ![](/img/1.png)
+
+Si cambiamos un poco nuestra letra y volvemos a dar [espacio], nos mostrará el patrón que ya tiene aprendido y que reconoció. Además, nos indica que pertenece a la misma clase que la anterior (0):
+![](/img/2.png)
+
+Nuevamente, dibujamos una G distinta. Sigue reconociéndola y mostrando que es de la clase 0:
+![](/img/3.png)
+
+Si ahora, dibujamos la letra B, la cual representa un patrón muy distinto, veremos que la toma como uno nuevo. Incluso muestra que es de la clase 1:
+![](/img/4.png)
+
+Hacemos una B un poco cambiada. La reconoce e indica la clase 1:
+![](/img/5.png)
+
+Otra B, la sigue reconociendo como clase 1:
+![](/img/6.png)
+
+Procederemos a dibujar la letra T, la cual indica que pertenece a la clase 2. Esto quiere decir que la reconoció como un patrón nuevo:
+![](/img/7.png)
+
+La modificamos, pero aun así la reconoce como clase 2:
+![](/img/8.png)
+
+Una nueva T, aún clase 2:
+![](/img/9.png)
+
+Otra T que cambia en gran parte, pero aún así la reconoce como clase 2:
+![](/img/10.png)
+
 
