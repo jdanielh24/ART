@@ -1,6 +1,6 @@
 # ART
 
-La teoría de la resonancia adaptativa (en inglés, adaptive resonance theory, conocido por sus siglas inglesas ART), desarrollada por Stephen Grossberg y Gail Carpenter. Es un modelo de red neuronal artificial (RNA) que basa su funcionamiento en la manera en que el cerebro procesa información y que describe una serie de modelos de redes neuronales que utilizando métodos de aprendizaje supervisado y no supervisado abordan problemas tales como el reconocimiento y la predicción de patrones.
+La teoría de la resonancia adaptativa (ART), es un modelo de red neuronal artificial (RNA) que basa su funcionamiento en la manera en que el cerebro procesa información y que describe una serie de modelos de redes neuronales que utilizando métodos de aprendizaje supervisado y no supervisado abordan problemas tales como el reconocimiento y la predicción de patrones.
 
 ## Características del ART
 - El aprendizaje se produce mediante un mecanismo de realimentación creado por la competencia entre las neuronas de la capa de salida y la capa de entrada de la red.
